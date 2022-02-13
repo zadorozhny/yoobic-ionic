@@ -33,7 +33,7 @@ export class ChatPage implements OnInit, OnDestroy {
     if (this.message.value) {
       this.messages.push({
         userId: this.myId,
-        text: this.message.value,
+        text: this.message.value.trim(),
         date: new Date()
       });
       this.message.setValue('');

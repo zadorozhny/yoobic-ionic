@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="chat">
+  <ion-progress-bar *ngIf="!messages?.length" type="indeterminate"></ion-progress-bar>
+  <ion-content #content class="content">
+    <ul *ngIf="messages?.length" class="messages">
+      <li class="message" [class.message-me]="myId === message.userId" *ngFor="let message of messages;">
+        <div class="bubble">
+          {{ message.text }}
+        </div>
+        <span class="date">{{ message.date.toDateString() }}</span>
+      </li>
+    </ul>
+  </ion-content>
+  <div class="footer">
+    <ion-textarea placeholder="Message..." rows="2" autoGrow [formControl]="message"></ion-textarea>
+    <ion-icon name="send-outline" size="large" (click)="sendMessage()"></ion-icon>
+  </div>
+</div>
